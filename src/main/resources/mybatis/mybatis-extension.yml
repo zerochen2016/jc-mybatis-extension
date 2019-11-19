@@ -1,0 +1,8 @@
+url: url
+user: user
+password: password
+driverClassName: com.mysql.jdbc.Driver
+entityPackage: jc.mybatis.extension.template
+entityExamplePackage: jc.mybatis.extension.template
+mapperPackage: jc.mybatis.extension.template
+servicePackage: com.test.service
