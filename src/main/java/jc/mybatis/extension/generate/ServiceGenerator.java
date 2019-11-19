@@ -18,7 +18,7 @@ public class ServiceGenerator {
 
 	public static void generate(String tableName, String projectPath) {
 		try {
-			File mybatisYml = new File(new StringBuffer(projectPath).append("src/main/resources/mybatis/mybatis-extension.yml").toString());
+			File mybatisYml = new File(new StringBuffer(projectPath).append("/src/main/resources/mybatis/mybatis-extension.yml").toString());
 			Properties prop = new Properties();
 			InputStream in = new FileInputStream(mybatisYml);
 			prop.load(in);
