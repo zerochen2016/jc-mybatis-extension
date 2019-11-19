@@ -15,6 +15,7 @@ import jc.mybatis.extension.entity.IndexInfo;
 import jc.mybatis.extension.util.DBUtil;
 import jc.mybatis.extension.util.StringUtil;
 
+
 public class ServiceGenerator {
 
 	public static void generate(String tableName) 
@@ -80,6 +81,7 @@ public class ServiceGenerator {
 		serviceImplLines.add(new StringBuffer("import ").append(mapperPackage).append(".").append(tableNameClass).append("Mapper;").toString());
 		serviceImplLines.add(new StringBuffer("import ").append(servicePackage).append(".").append(tableNameClass).append("Service;").toString());
 		serviceImplLines.add("\n");
+		serviceImplLines.add("@Service");		
 		serviceImplLines.add(new StringBuffer("public class ").append(tableNameClass).append("ServiceImpl implements ").append(tableNameClass).append("Service {").toString());
 		serviceImplLines.add("\n");
 		serviceImplLines.add("\t@Autowired");
