@@ -17,10 +17,9 @@ import jc.mybatis.extension.util.StringUtil;
 
 public class ServiceGenerator {
 
-	public static void generate(String tableName) 
+	public static void generate(String tableName, String projectPath) 
 					throws IOException {
 		
-		String projectPath = new File("").getAbsolutePath();
 		File mybatisYml = new File(new StringBuffer(projectPath).append("/src/main/resources/mybatis/mybatis-extension.yml").toString());
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(mybatisYml);
