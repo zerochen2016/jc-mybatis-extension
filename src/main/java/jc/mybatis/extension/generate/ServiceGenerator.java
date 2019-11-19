@@ -2,6 +2,7 @@ package jc.mybatis.extension.generate;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,41 +18,41 @@ import jc.mybatis.extension.util.StringUtil;
 public class ServiceGenerator {
 
 	public static void generate(String tableName, String projectPath, String servicePackage, String mapperPackage,
-			String entityPackage, String entityExamplePackage, String url, String user, String password, String driverClassName) {
-		try {
-			String servicePackagePath = servicePackage.replace(".", "/");
-			String servicePath = new StringBuffer(projectPath).append("/src/main/java/")
-					.append(servicePackagePath).append("/").toString();
-			String serviceImplPath = new StringBuffer(servicePath).append("impl/").toString();
-			
-			File serviceDir = new File(serviceImplPath);
-			if (!serviceDir.exists()) {
-				serviceDir.mkdirs();
-			}
-			String tableNameCamel = StringUtil.underlineToCamel(tableName);
-			String tableNameClass = StringUtil.firstLetterUpper(tableNameCamel);
-			File serviceFile = new File(
-					new StringBuffer(servicePath).append(tableNameClass).append("Service.java").toString());
-			File serviceImplFile = new File(
-					new StringBuffer(serviceImplPath).append(tableNameClass).append("ServiceImpl.java").toString());
-			
-			if (!serviceFile.exists()) {
-				serviceFile.createNewFile();
-			}
-			if (!serviceImplFile.exists()) {
-				serviceImplFile.createNewFile();
-			} 
-			List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
-			List<String> serviceLines = getServiceContent(tableNameClass, entityPackage, servicePackage, indexes);
-			List<String> serviceImplLines = getServiceImplContent(tableNameClass,tableNameCamel, entityPackage, entityExamplePackage,
-					mapperPackage, servicePackage, indexes);
-			
-			FileUtils.writeLines(serviceFile, serviceLines, false);
-			FileUtils.writeLines(serviceImplFile, serviceImplLines, false);
-		} catch (Exception e) {
-			e.printStackTrace();
+			String entityPackage, String entityExamplePackage, String url, String user, String password, String driverClassName) 
+					throws IOException {
+		
+		String servicePackagePath = servicePackage.replace(".", "/");
+		String servicePath = new StringBuffer(projectPath).append("/src/main/java/")
+				.append(servicePackagePath).append("/").toString();
+		String serviceImplPath = new StringBuffer(servicePath).append("impl/").toString();
+		System.out.println("----------------------------------------");
+		System.out.println("servicePackagePath = " + servicePackagePath);
+		System.out.println("servicePath = " + servicePath);
+		System.out.println("serviceImplPath = " + serviceImplPath);
+		File serviceDir = new File(serviceImplPath);
+		if (!serviceDir.exists()) {
+			serviceDir.mkdirs();
 		}
-
+		String tableNameCamel = StringUtil.underlineToCamel(tableName);
+		String tableNameClass = StringUtil.firstLetterUpper(tableNameCamel);
+		File serviceFile = new File(
+				new StringBuffer(servicePath).append(tableNameClass).append("Service.java").toString());
+		File serviceImplFile = new File(
+				new StringBuffer(serviceImplPath).append(tableNameClass).append("ServiceImpl.java").toString());
+		
+		if (!serviceFile.exists()) {
+			serviceFile.createNewFile();
+		}
+		if (!serviceImplFile.exists()) {
+			serviceImplFile.createNewFile();
+		} 
+		List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
+		List<String> serviceLines = getServiceContent(tableNameClass, entityPackage, servicePackage, indexes);
+		List<String> serviceImplLines = getServiceImplContent(tableNameClass,tableNameCamel, entityPackage, entityExamplePackage,
+				mapperPackage, servicePackage, indexes);
+		
+		FileUtils.writeLines(serviceFile, serviceLines, false);
+		FileUtils.writeLines(serviceImplFile, serviceImplLines, false);
 	}
 	
 	public static List<String> getServiceImplContent(String tableNameClass, String tableNameCamel, String entityPackage,
