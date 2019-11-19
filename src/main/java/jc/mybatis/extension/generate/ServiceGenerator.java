@@ -16,9 +16,9 @@ import jc.mybatis.extension.util.StringUtil;
 
 public class ServiceGenerator {
 
-	public static void generate(String tableName) {
+	public static void generate(String tableName, String projectPath) {
 		try {
-			File mybatisYml = new File("src/main/resources/mybatis/mybatis-extension.yml");
+			File mybatisYml = new File(new StringBuffer(projectPath).append("src/main/resources/mybatis/mybatis-extension.yml").toString());
 			Properties prop = new Properties();
 			InputStream in = new FileInputStream(mybatisYml);
 			prop.load(in);
@@ -34,7 +34,7 @@ public class ServiceGenerator {
 			
 			
 			String servicePackagePath = servicePackage.replace(".", "/");
-			String servicePath = new StringBuffer(new File("").getAbsolutePath()).append("/src/main/java/")
+			String servicePath = new StringBuffer(projectPath).append("/src/main/java/")
 					.append(servicePackagePath).append("/").toString();
 			String serviceImplPath = new StringBuffer(servicePath).append("impl/").toString();
 			
@@ -54,7 +54,7 @@ public class ServiceGenerator {
 			}
 			if (!serviceImplFile.exists()) {
 				serviceImplFile.createNewFile();
-			}
+			} 
 			List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
 			List<String> serviceLines = getServiceContent(tableNameClass, entityPackage, servicePackage, indexes);
 			List<String> serviceImplLines = getServiceImplContent(tableNameClass,tableNameCamel, entityPackage, entityExamplePackage,
