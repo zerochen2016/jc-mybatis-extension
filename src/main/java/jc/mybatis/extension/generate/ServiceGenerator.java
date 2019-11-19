@@ -17,17 +17,17 @@ import jc.mybatis.extension.util.StringUtil;
 
 public class ServiceGenerator {
 
-	public static void generate(String tableName, String projectPath) 
+	public static void generate(String tableName, String projectPath, List<IndexInfo> indexes) 
 					throws IOException {
 		
 		File mybatisYml = new File(new StringBuffer(projectPath).append("/src/main/resources/mybatis/mybatis-extension.yml").toString());
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(mybatisYml);
 		prop.load(in);
-		String url = prop.getProperty("url");
-		String user = prop.getProperty("user");
-		String password = prop.getProperty("password");
-		String driverClassName = prop.getProperty("driverClassName");
+//		String url = prop.getProperty("url");
+//		String user = prop.getProperty("user");
+//		String password = prop.getProperty("password");
+//		String driverClassName = prop.getProperty("driverClassName");
 		String servicePackage = prop.getProperty("servicePackage");
 		String entityPackage = prop.getProperty("entityPackage");
 		String entityExamplePackage = prop.getProperty("entityExamplePackage");
@@ -54,7 +54,7 @@ public class ServiceGenerator {
 		if (!serviceImplFile.exists()) {
 			serviceImplFile.createNewFile();
 		} 
-		List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
+//		List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
 		List<String> serviceLines = getServiceContent(tableNameClass, entityPackage, servicePackage, indexes);
 		List<String> serviceImplLines = getServiceImplContent(tableNameClass,tableNameCamel, entityPackage, entityExamplePackage,
 				mapperPackage, servicePackage, indexes);
