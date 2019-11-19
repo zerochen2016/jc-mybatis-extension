@@ -16,23 +16,9 @@ import jc.mybatis.extension.util.StringUtil;
 
 public class ServiceGenerator {
 
-	public static void generate(String tableName, String projectPath) {
+	public static void generate(String tableName, String projectPath, String servicePackage, String mapperPackage,
+			String entityPackage, String entityExamplePackage, String url, String user, String password, String driverClassName) {
 		try {
-			File mybatisYml = new File(new StringBuffer(projectPath).append("/src/main/resources/mybatis/mybatis-extension.yml").toString());
-			Properties prop = new Properties();
-			InputStream in = new FileInputStream(mybatisYml);
-			prop.load(in);
-			
-			String url = prop.getProperty("url");
-			String user = prop.getProperty("user");
-			String password = prop.getProperty("password");
-			String driverClassName = prop.getProperty("driverClassName");
-			String servicePackage = prop.getProperty("servicePackage");
-			String entityPackage = prop.getProperty("entityPackage");
-			String entityExamplePackage = prop.getProperty("entityExamplePackage");
-			String mapperPackage = prop.getProperty("mapperPackage");
-			
-			
 			String servicePackagePath = servicePackage.replace(".", "/");
 			String servicePath = new StringBuffer(projectPath).append("/src/main/java/")
 					.append(servicePackagePath).append("/").toString();
