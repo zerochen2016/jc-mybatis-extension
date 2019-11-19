@@ -49,7 +49,7 @@ public class ServiceGenerator {
 			FileUtils.writeLines(serviceFile, serviceLines, false);
 			FileUtils.writeLines(serviceImplFile, serviceImplLines, false);
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}
