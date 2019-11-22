@@ -17,6 +17,10 @@ dependencies {
 }
 You can get Version in https://jitpack.io Visit and search https://github.com/zerochen2016/jc-mybatis-extension.git
 
+How to use
+
+1. Create generatorConfig.xml And mybatis-extension.yml in src/resources/mybatis
+2. Run like demo
 Demo 
 
 	public static void main(String args[]) throws Exception {
