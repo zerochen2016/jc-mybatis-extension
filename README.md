@@ -24,8 +24,8 @@ You can get Version in https://jitpack.io Visit and search https://github.com/ze
 
 1. Create generatorConfig.xml And mybatis-extension.yml in src/resources/mybatis
 2. Run like demo
-Demo 
+### Demo 
 
-	public static void main(String args[]) throws Exception {
+	< public static void main(String args[]) throws Exception {
 		ServiceGenerator.generate("table_name");
-	}
+	} >
