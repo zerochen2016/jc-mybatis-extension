@@ -26,6 +26,6 @@ You can get Version in https://jitpack.io Visit and search https://github.com/ze
 2. Run like demo
 ### Demo 
 
-	<public static void main(String args[]) throws Exception {
+	`<public static void main(String args[]) throws Exception {
 		ServiceGenerator.generate("table_name");
-	}>
+	}>`
