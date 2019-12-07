@@ -1,7 +1,7 @@
-##Introduction
+## Introduction
 A extension module of mybatis . Used to generate Service Class of corresponding Mapper Class
 
-##How to get 
+## How to get 
 Step 1. Add the JitPack repository to your build file
 
 allprojects {
@@ -17,7 +17,7 @@ dependencies {
 }
 You can get Version in https://jitpack.io Visit and search https://github.com/zerochen2016/jc-mybatis-extension.git
 
-##How to use
+## How to use
 
 1. Create generatorConfig.xml And mybatis-extension.yml in src/resources/mybatis
 2. Run like demo
