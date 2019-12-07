@@ -1,3 +1,4 @@
+# jc-mybatis-extension
 ## Introduction
 A extension module of mybatis . Used to generate Service Class of corresponding Mapper Class
 
