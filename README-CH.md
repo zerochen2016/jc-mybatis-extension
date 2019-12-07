@@ -6,12 +6,14 @@ A extension module of mybatis . Used to generate Service Class of corresponding 
 ## 使用
 ### 步骤1
 将如下groovy代码添加的项目的gradle.build
+<
 allprojects {
 	repositories {
 		...
 		maven { url 'https://jitpack.io' }
 	}
 }
+>
 
 ### 步骤2
 添加依赖
