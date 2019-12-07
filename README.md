@@ -1,6 +1,6 @@
 # jc-mybatis-extension
 ## Introduction
-A extension module of mybatis . Used to generate Service Class of corresponding Mapper Class
+A extension module of Mybatis Generator . Used to generate Service Class of corresponding Mapper Class
 
 ## How to get 
 ### Step 1. 
@@ -18,6 +18,7 @@ Add the dependency
 dependencies {
         implementation 'com.github.zerochen2016:jc-mybatis-extension:{VERSION}'
 }
+
 You can get Version in https://jitpack.io Visit and search https://github.com/zerochen2016/jc-mybatis-extension.git
 
 ## How to use
