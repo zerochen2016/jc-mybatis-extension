@@ -20,6 +20,7 @@ allprojects {
 dependencies {
         implementation 'com.github.zerochen2016:jc-mybatis-extension:{VERSION}'
 }
+
 你可以在 https://jitpack.io 搜索 https://github.com/zerochen2016/jc-mybatis-extension.git 查看版本
 
 ## 怎么使用
