@@ -1,4 +1,5 @@
 # jc-mybatis-extension
+[README-CN.md](./README-CN.md)
 ## Introduction
 A extension module of Mybatis Generator . Used to generate Service Class of corresponding Mapper Class
 
