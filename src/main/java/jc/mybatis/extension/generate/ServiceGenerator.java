@@ -75,6 +75,7 @@ public class ServiceGenerator {
 		serviceImplLines.add("import java.util.List;");
 		serviceImplLines.add("\n");
 		serviceImplLines.add("import org.springframework.beans.factory.annotation.Autowired;");
+		serviceImplLines.add("import org.springframework.stereotype.Service;");
 		serviceImplLines.add("import org.springframework.util.CollectionUtils;");
 		serviceImplLines.add(new StringBuffer("import ").append(entityPackage).append(".").append(tableNameClass).append(";").toString());
 		serviceImplLines.add(new StringBuffer("import ").append(entityExamplePackage).append(".").append(tableNameClass).append("Example;").toString());
