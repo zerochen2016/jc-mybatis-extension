@@ -1,4 +1,5 @@
 # jc-mybatis-extension
+[README-EN.md](./README.md)
 ## 简介
 A extension module of mybatis . Used to generate Service Class of corresponding Mapper Class
 基于Mybatis generator的一个扩展模块，用于自动生成和Mapper对应的service层代码。
