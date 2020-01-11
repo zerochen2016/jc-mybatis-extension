@@ -17,7 +17,7 @@ import jc.mybatis.extension.util.StringUtil;
 
 
 public class ServiceGenerator {
-
+	
 	public static void generate(String tableName) 
 					throws IOException {
 		String projectPath = new File("").getAbsolutePath();
@@ -117,6 +117,16 @@ public class ServiceGenerator {
 		serviceImplLines.add(buildExample);
 		serviceImplLines.add(list);
 		serviceImplLines.add("\t\treturn list;");
+		serviceImplLines.add("\t}");
+		serviceImplLines.add("\n");
+		
+		//count
+		serviceImplLines.add("\t@Override");
+		serviceImplLines.add(new StringBuffer("\tpublic long").append(" count").append(tableNameClass)
+				.append("(").append(tableNameClass).append(" record) {").toString());
+		serviceImplLines.add(newExample);
+		serviceImplLines.add(buildExample);
+		serviceImplLines.add(new StringBuffer("\t\treturn this.count").append(tableNameClass).append("(record);").toString());
 		serviceImplLines.add("\t}");
 		serviceImplLines.add("\n");
 
@@ -244,6 +254,9 @@ public class ServiceGenerator {
 				.append(tableNameClass).append("> pageModel);").toString());
 		serviceLines.add("\n");
 		serviceLines.add(new StringBuffer("\tList<").append(tableNameClass).append("> list").append(tableNameClass)
+				.append("(").append(tableNameClass).append(" record);").toString());
+		serviceLines.add("\n");
+		serviceLines.add(new StringBuffer("\tlong").append(" count").append(tableNameClass)
 				.append("(").append(tableNameClass).append(" record);").toString());
 		serviceLines.add("\n");
 		serviceLines.add(new StringBuffer("\t").append(tableNameClass).append(" get").append(tableNameClass).append("(").append(tableNameClass)
