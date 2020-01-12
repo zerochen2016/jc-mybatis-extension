@@ -126,7 +126,7 @@ public class ServiceGenerator {
 				.append("(").append(tableNameClass).append(" record) {").toString());
 		serviceImplLines.add(newExample);
 		serviceImplLines.add(buildExample);
-		serviceImplLines.add(new StringBuffer("\t\treturn this.count").append(tableNameClass).append("(record);").toString());
+		serviceImplLines.add(new StringBuffer("\t\treturn this.").append(tableNameClass).append("Mapper.countByExample(example);").toString());
 		serviceImplLines.add("\t}");
 		serviceImplLines.add("\n");
 
