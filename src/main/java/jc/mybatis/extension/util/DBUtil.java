@@ -49,13 +49,14 @@ public class DBUtil {
 		}
 	}
 	
-	public static List<IndexInfo> listIndexInfo(DBInfo dbInfo, String tableName) {
+	public static List<IndexInfo> listIndexInfo(DBInfo dbInfo, String schema, String tableName) {
 		List<IndexInfo> list = new ArrayList<>();
 		Connection conn = getConnection(dbInfo.getUrl(), dbInfo.getUser(), dbInfo.getPassword(), dbInfo.getDriverClassName());
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			ps = conn.prepareStatement(new StringBuffer("select * from information_schema.columns where TABLE_NAME = '").append(tableName).append("'").toString());
+			ps = conn.prepareStatement(new StringBuffer("select * from information_schema.columns where  TABLE_NAME = '").append(tableName).append("'")
+					.append(" AND TABLE_SCHEMA = '").append(schema).append("'").toString());
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				String columnKey = rs.getString("COLUMN_KEY");

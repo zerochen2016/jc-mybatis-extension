@@ -33,6 +33,7 @@ public class ServiceGenerator {
 		String entityPackage = prop.getProperty("entityPackage");
 		String entityExamplePackage = prop.getProperty("entityExamplePackage");
 		String mapperPackage = prop.getProperty("mapperPackage");
+		String schema = prop.getProperty("schema");
 		
 		String servicePackagePath = servicePackage.replace(".", "/");
 		String servicePath = new StringBuffer(projectPath).append("/src/main/java/")
@@ -55,7 +56,7 @@ public class ServiceGenerator {
 		if (!serviceImplFile.exists()) {
 			serviceImplFile.createNewFile();
 		} 
-		List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), tableName);
+		List<IndexInfo> indexes = DBUtil.listIndexInfo(new DBInfo(url, user, password, driverClassName), schema,tableName);
 		List<String> serviceLines = getServiceContent(tableNameClass, entityPackage, servicePackage, indexes);
 		List<String> serviceImplLines = getServiceImplContent(tableNameClass,tableNameCamel, entityPackage, entityExamplePackage,
 				mapperPackage, servicePackage, indexes);
